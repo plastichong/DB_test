@@ -15,9 +15,11 @@ public class JDBCutil {
     //DB 연결 메서드
     public static Connection getConnection() {
         try {
+
             Class.forName(driverClass);
             System.out.println("DB 연결");
             return DriverManager.getConnection(url, username, password);
+
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
@@ -34,11 +36,11 @@ public class JDBCutil {
     public static void close(Connection conn, PreparedStatement pstmt) {
         try {
             if (pstmt != null) {
-                System.out.println("DB 연결 끊음");
+                System.out.println("pstmt 연결 끊음");
                 pstmt.close();
             }
             if (conn != null) {
-                System.out.println("DB 연결 끊음");
+                System.out.println("conn 연결 끊음");
                 conn.close();
             }
         } catch (SQLException e) {
@@ -51,15 +53,15 @@ public class JDBCutil {
 
         try {
             if (rs != null) {
-                System.out.println("DB 연결 끊음");
+                System.out.println("rs 연결 끊음");
                 rs.close();
             }
             if (pstmt != null) {
-                System.out.println("DB 연결 끊음");
+                System.out.println("pstmt 연결 끊음");
                 pstmt.close();
             }
             if (conn != null) {
-                System.out.println("DB 연결 끊음");
+                System.out.println("conn 연결 끊음");
                 conn.close();
             }
         } catch (SQLException e) {
